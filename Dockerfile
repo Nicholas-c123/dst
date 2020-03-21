@@ -21,6 +21,8 @@ RUN set -x && \
     apt-get autoremove --purge -y wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
+COPY --chown=dst:dst start-container-server.sh /home/dst/
+RUN chmod 755 /home/dst/start-container-server.sh
 USER dst
 RUN mkdir -p .klei/DoNotStarveTogether server_dst/mods
 
@@ -35,5 +37,4 @@ RUN ./steamcmd.sh \
 
 VOLUME ["/home/dst/.klei/DoNotStarveTogether", "/home/dst/server_dst/mods"]
 
-COPY ["start-container-server.sh", "/home/dst/"]
-ENTRYPOINT ["/home/dst/start-container-server.sh"]
+CMD [ "/home/dst/start-container-server.sh"]
