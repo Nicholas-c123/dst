@@ -22,7 +22,6 @@ RUN set -x && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY --chown=dst:dst start-container-server.sh /home/dst/
-RUN chmod 755 /home/dst/start-container-server.sh
 USER dst
 RUN mkdir -p .klei/DoNotStarveTogether server_dst/mods
 
